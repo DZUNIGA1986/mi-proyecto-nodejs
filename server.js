@@ -14,16 +14,27 @@ const startServer = async () => {
     await sequelize.sync({ alter: true });
     console.log('✅ Modelos sincronizados');
 
-    // Iniciar servidor
-    app.listen(PORT, () => {
-      console.log(`🚀 Servidor ejecutándose en puerto ${PORT}`);
-      console.log(`🌍 Entorno: ${process.env.NODE_ENV}`);
-      console.log(`📍 URL: http://localhost:${PORT}`);
-    });
+    // Iniciar servidor SOLO si NO estamos en Vercel
+    if (process.env.VERCEL !== '1') {
+      app.listen(PORT, () => {
+        console.log(`🚀 Servidor ejecutándose en puerto ${PORT}`);
+        console.log(`🌍 Entorno: ${process.env.NODE_ENV}`);
+        console.log(`📍 URL: http://localhost:${PORT}`);
+      });
+    } else {
+      console.log('✅ Aplicación lista para Vercel');
+    }
   } catch (error) {
     console.error('❌ Error al iniciar el servidor:', error);
-    process.exit(1);
+    // En Vercel, no queremos que se detenga el proceso
+    if (process.env.VERCEL !== '1') {
+      process.exit(1);
+    }
   }
 };
 
+// Iniciar el servidor
 startServer();
+
+// ⭐ IMPORTANTE: Exportar app para Vercel
+module.exports = app;
