@@ -1,0 +1,20 @@
+# Dependencias
+node_modules/
+vendor/
+AppData/
+.vscode/
+
+# Archivos de entorno (¡MUY IMPORTANTE!)
+.env
+.env.local
+*.log
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Carpetas de compilación
+dist/
+build/
+
+ 
