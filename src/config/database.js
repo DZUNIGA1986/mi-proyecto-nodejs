@@ -2,13 +2,20 @@ const { Sequelize } = require('sequelize');
 
 // Configuración de la base de datos
 const sequelize = new Sequelize(
-  process.env.DB_NAME || 'postgres',
-  process.env.DB_USER || 'postgres',
-  process.env.DB_PASSWORD || 'postgres',
+  process.env.DB_NAME || 'pruebadb',
+  process.env.DB_USER || 'neondb_owner',
+  process.env.DB_PASSWORD || 'npg_Wt1GO5dmpAwl',
   {
-    host: process.env.DB_HOST || 'localhost',
+    host: process.env.DB_HOST || 'ep-summer-brook-ady57hym-pooler.c-2.us-east-1.aws.neon.tech',
     port: process.env.DB_PORT || 5432,
     dialect: 'postgres',
+    dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false // Necesario para Neon
+    }
+  },
+
     logging: process.env.NODE_ENV === 'development' ? console.log : false,
     
     pool: {
