@@ -3,7 +3,7 @@
  * Responsabilidades: Manejar peticiones HTTP de productos
  */
 
-const ProductService = require('../services/ProductService');
+const ProductService = require('../services/productService');
 //const { User, Product } = require('../models');
 class ProductController {
   /**
