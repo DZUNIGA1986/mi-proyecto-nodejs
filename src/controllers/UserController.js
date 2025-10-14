@@ -3,7 +3,7 @@
  * Responsabilidades: Manejar peticiones HTTP, validar entrada, enviar respuestas
  */
 //const { User, Product } = require('../models');
-const UserService = require('../services/UserService');
+const UserService = require('../services/userService');
 
 class UserController {
   /**
