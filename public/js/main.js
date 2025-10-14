@@ -1,11 +1,11 @@
         // Variables globales
         let authToken = localStorage.getItem('authToken');
-        const API_BASE = 'http://localhost:8000/api';
+        const API_BASE = 'https://continuing-sybilla-1proyectosmv-dz1-24c23044.koyeb.app/api';
 
         // Verificar estado del servidor
         async function checkServerStatus() {
             try {
-                const response = await fetch('http://localhost:8000/health');
+                const response = await fetch('https://continuing-sybilla-1proyectosmv-dz1-24c23044.koyeb.app/health');
                 const data = await response.json();
                 
                 document.getElementById('statusIndicator').className = 'status-indicator online';
@@ -134,7 +134,7 @@
 
             async function loadCategories() {
                 try {
-                    const response = await fetch('http://localhost:8000/api/categories');
+                    const response = await fetch('https://continuing-sybilla-1proyectosmv-dz1-24c23044.koyeb.app/api/categories');
                     const result = await response.json();
 
                     const selectElement = document.getElementById('productCategory');
