@@ -1,11 +1,11 @@
         // Variables globales
         let authToken = localStorage.getItem('authToken');
-        const API_BASE = 'http://localhost:3000/api';
+        const API_BASE = 'http://localhost:8000/api';
 
         // Verificar estado del servidor
         async function checkServerStatus() {
             try {
-                const response = await fetch('http://localhost:3000/health');
+                const response = await fetch('http://localhost:8000/health');
                 const data = await response.json();
                 
                 document.getElementById('statusIndicator').className = 'status-indicator online';
@@ -17,7 +17,7 @@
                 `;
             } catch (error) {
                 document.getElementById('statusIndicator').className = 'status-indicator offline';
-                document.getElementById('serverStatus').innerHTML = '❌ <strong>Servidor Offline</strong><br>Asegúrate de que el servidor esté ejecutándose en el puerto 3000';
+                document.getElementById('serverStatus').innerHTML = '❌ <strong>Servidor Offline</strong><br>Asegúrate de que el servidor esté ejecutándose en el puerto 8000';
             }
         }
 
@@ -134,7 +134,7 @@
 
             async function loadCategories() {
                 try {
-                    const response = await fetch('http://localhost:3000/api/categories');
+                    const response = await fetch('http://localhost:8000/api/categories');
                     const result = await response.json();
 
                     const selectElement = document.getElementById('productCategory');
