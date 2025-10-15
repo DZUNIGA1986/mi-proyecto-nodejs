@@ -3,6 +3,8 @@
  * Responsabilidades: Verificar tokens y proteger rutas
  */
 
+const JWT_SECRET= 'mi-clave-secreta-super-segura-2025';
+
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
@@ -27,7 +29,9 @@ class AuthMiddleware {
       }
 
       // Verificar token
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    //  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, JWT_SECRET);
+      
 
       // Buscar usuario en base de datos usando Sequelize
       const user = await User.scope('withPassword').findByPk(decoded.userId);
@@ -122,8 +126,9 @@ class AuthMiddleware {
       }
 
       const token = authHeader.split(' ')[1];
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
+     // const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const decoded = jwt.verify(token, JWT_SECRET);
+      
       const user = await User.findByPk(decoded.userId);
 
       if (user && user.isActive) {
