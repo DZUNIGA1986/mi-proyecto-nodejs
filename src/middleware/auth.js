@@ -62,7 +62,8 @@ class AuthMiddleware {
       if (error.name === 'JsonWebTokenError') {
         return res.status(401).json({
           success: false,
-          message: 'Token inválido'
+          message: 'Token inválido'|| error.message
+ 
         });
       }
 
